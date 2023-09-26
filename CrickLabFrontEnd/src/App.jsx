@@ -20,11 +20,13 @@ import PublicLayout from "./page/Layout/PublicLayout";
 import NewsPanel from "./page/News/NewsPanel";
 import SeriesView from "./page/Series/Series";
 import MatchesView from "./page/Matches/Matches";
+import Teams from "./page/team/Teams";
+import Players from "./page/Player/Players";
 function App() {
   const PrivateWrapper = ({ auth: { isAuthenticated } }) => {
     return isAuthenticated ? <Outlet /> : <Navigate to="admin/login" />;
   };
-  console.log(JSON.parse(localStorage.getItem('auth')))
+  console.log(JSON.parse(localStorage.getItem("auth")));
   return (
     <>
       <Routes>
@@ -36,6 +38,8 @@ function App() {
           <Route path="/matchscore/:id" element={<AfterMatchCard />} />
           <Route path="/series" element={<SeriesView />} />
           <Route path="/series/match/:id" element={<MatchesView />} />
+          <Route path="/teams" element={<Teams />} />
+          <Route path="/player/:id" element={<Players />} />
         </Route>
 
         {/* Home */}
