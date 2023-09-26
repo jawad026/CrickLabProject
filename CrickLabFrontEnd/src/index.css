@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+
+
+::-webkit-scrollbar {
+  height: 4px; /* height of horizontal scrollbar ← You're missing this */
+  width: 7px; /* width of vertical scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b2b2b2;
+  border-radius: 2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.slick-arrow {
+  background-color: aqua;
+}
+.slick-prev,
+.slick-next {
+  font-size: 0;
+  line-height: 0;
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  transform: translate(0, -50%);
+  cursor: pointer;
+  color: black;
+  border: none;
+  outline: none;
+  background: orange;
+}
+.slick-prev:hover,
+.slick-next:hover {
+  color: black;
+  background: orange;
+}
+.slick-next {
+  right: 8px;
+}
+
+.active{
+  color: blue !important;
+}
