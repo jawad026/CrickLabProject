@@ -10,6 +10,7 @@ import { useAddScoreMutation } from "../../../Redux/Feature/scorecardApi";
 import { useUpdateMatchStatusMutation } from "../../../Redux/Feature/matchApi";
 import Loading from "../../../components/Loading/Loading";
 import toast, { Toaster } from "react-hot-toast";
+import BackButton from "../../../components/common/BackButton/BackButton";
 
 const StartMatch = () => {
   const param = useParams();
@@ -150,15 +151,15 @@ const StartMatch = () => {
                 // Handle successful login response, e.g., store user token or redirect
                 // Handle successful login response, e.g., store user token or redirect
               })
-              .catch((error) => {
+              .catch(() => {
                 // Handle login error
-                console.log("error", error);
+                toast.error("Something went wrong");
               });
           }
         })
-        .catch((err) => {
+        .catch(() => {
           // Handle login error
-          console.log(err);
+          toast.error("Something went wrong");
           // toast.error(error);
         });
     }
@@ -191,6 +192,7 @@ const StartMatch = () => {
   }
   return (
     <div className="relative">
+      <BackButton jump={-2} />
       <Button
         label={inngins == 1 ? "2nd Innings" : "End Match"}
         onClick={() => incrementInnings()}

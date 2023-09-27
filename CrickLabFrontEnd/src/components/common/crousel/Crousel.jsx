@@ -43,19 +43,22 @@ const Carousel = ({ cards, scorecard }) => {
   return (
     <div className="w-[90vw]">
       <Slider {...settings}>
-        {cards.map((item) => {
-          return (
-            <MatchCard
-              key={item._id}
-              status={item.status}
-              scorecard={scorecard.filter((score) => score.match === item._id)}
-              match={item._id}
-              teamA={item.teamA}
-              teamB={item.teamB}
-              dateTime={item.datetime}
-            />
-          );
-        })}
+        {cards
+          .map((item) => {
+            return (
+              <MatchCard
+                key={item._id}
+                status={item.status}
+                scorecard={scorecard.filter(
+                  (score) => score.match === item._id
+                )}
+                match={item._id}
+                teamA={item.teamA}
+                teamB={item.teamB}
+                dateTime={item.datetime} // And here as well
+              />
+            );
+          })}
       </Slider>
     </div>
   );

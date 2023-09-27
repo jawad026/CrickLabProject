@@ -17,7 +17,7 @@ const Table = ({ column, data, action, onAction, status, linked, link }) => {
     } else if (targetDate.getDate() === currentDate.getDate()) {
       return "live";
     } else {
-      return "previous";
+      return "result";
     }
   }
 
@@ -41,9 +41,7 @@ const Table = ({ column, data, action, onAction, status, linked, link }) => {
       return date.toLocaleString("en-US", options).slice(0, -5);
     }
 
-    return value
-      .split(".")
-      .reduce((acc, curr) => acc[curr], object);
+    return value.split(".").reduce((acc, curr) => acc[curr], object);
   }
 
   return (
@@ -55,9 +53,6 @@ const Table = ({ column, data, action, onAction, status, linked, link }) => {
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" className="px-6 py-3">
-              ID
-            </th>
             {column.map((item, i) => {
               return (
                 <th key={i} scope="col" className="px-6 py-3">
@@ -84,9 +79,6 @@ const Table = ({ column, data, action, onAction, status, linked, link }) => {
               key={rowIndex}
               onClick={() => linked && navigate(`/admin/${link}/${row._id}`)}
             >
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                {rowIndex}
-              </td>
               {column.map((column, colIndex) => (
                 <td
                   key={colIndex}

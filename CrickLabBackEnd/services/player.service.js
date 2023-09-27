@@ -1,11 +1,9 @@
-// services/product.services.js
 
 const playerModel = require("../models/player.model");
 
 class PlayerService {
   async getThePlayer(req) {
     try {
-      // Call the logoutUser function from the AuthService
       const getTeams = await playerModel.find({ team: req });
       return getTeams;
     } catch (error) {
@@ -14,7 +12,6 @@ class PlayerService {
   }
   async getAllPlayer(req) {
     try {
-      // Call the logoutUser function from the AuthService
       const getTeams = await playerModel.find();
       return getTeams;
     } catch (error) {

@@ -5,6 +5,7 @@ import Heading from "../../../components/common/heading/Heading";
 import Table from "../../../components/common/table/Table";
 import { IoIosAddCircle } from "react-icons/io";
 import Loading from "../../../components/Loading/Loading";
+import BackButton from "../../../components/common/BackButton/BackButton";
 const Series = () => {
   const { data = [], isLoading } = useGetSeriesAllQuery();
   const nevigate = useNavigate();
@@ -20,6 +21,7 @@ const Series = () => {
   }
   return (
     <>
+    <BackButton />
       <div className="flex gap-y-10 flex-col justify-end">
         <Heading title={"Series"} subtitle={"World Cricket Club"} />
         <div>

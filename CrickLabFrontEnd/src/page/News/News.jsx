@@ -1,15 +1,16 @@
 import { useParams } from "react-router-dom";
 import { useGetAllNewsQuery } from "../../Redux/Feature/newsApi";
-import Loading from "../../components/Loading/Loading"
+import Loading from "../../components/Loading/Loading";
+import BackButton from "../../components/common/BackButton/BackButton";
 const NewsView = () => {
   const param = useParams();
   const { data = [], isLoading } = useGetAllNewsQuery();
-  console.log(data.filter((item) => item._id === param.id));
   if (isLoading) {
     return <Loading />;
   }
   return (
     <div>
+      <BackButton />
       <div className="max-w-2xl mx-auto p-4">
         {data
           .filter((item) => item._id === param.id)

@@ -5,7 +5,6 @@ const {
   UpdateMatchStatus,
   getSeriesMatches,
 } = require("../services/match.service");
-const { getAllSeries, addSeries } = require("../services/series.service");
 
 class matchController {
   async getMatch(req, res, next) {
@@ -34,7 +33,7 @@ class matchController {
   }
   async getSeriesMatch(req, res, next) {
     try {
-      console.log(req.params)
+      console.log(req.params);
       const match = await getSeriesMatches(req.params.id);
       if (!match) {
         return res.json({ message: "Something went wrong" });
@@ -42,7 +41,7 @@ class matchController {
         return res.status(200).json(match);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
       return res.status(500).json(error);
     }
   }

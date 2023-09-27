@@ -19,6 +19,7 @@ export const newsApi = createApi({
       }),
     }),
   }),
+  invalidates: [{ endpoint: "getAllNews" }],
 });
 
 // Export hooks for usage in functional components, which are

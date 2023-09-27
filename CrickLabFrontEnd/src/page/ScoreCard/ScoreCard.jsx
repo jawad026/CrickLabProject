@@ -48,7 +48,6 @@ function ScoreCard() {
     const convertBallsToOvers = () => {
       const overs = Math.floor(score.ball / 6);
       const remainingBalls = score.ball % 6;
-      console.log(remainingBalls, score.ball);
       setOver(`${overs}.${remainingBalls}`);
     };
     if (score.ball > 0) convertBallsToOvers();

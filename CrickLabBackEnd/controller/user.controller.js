@@ -1,6 +1,3 @@
-// controllers/authController.js
-
-
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const {
@@ -19,7 +16,7 @@ class userController {
 
   async logoutUser(req, res, next) {
     try {
-      // Call the logoutUser function from the AuthService
+
       const isLoggedOut = logoutUser(req);
 
       if (isLoggedOut) {
@@ -55,7 +52,6 @@ class userController {
     }
   }
 
-  // Additional authentication-related controller functions (e.g., registerUser, forgotPassword, etc.)
 }
 
 module.exports = new userController();

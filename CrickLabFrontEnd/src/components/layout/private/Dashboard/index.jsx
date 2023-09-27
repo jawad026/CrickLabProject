@@ -4,7 +4,6 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from "react";
 export const Index = () => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(isOpen);
   return (
     <div className="flex">
       {/* Sidebar */}

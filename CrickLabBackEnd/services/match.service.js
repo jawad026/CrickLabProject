@@ -5,7 +5,6 @@ const matchModel = require("../models/match.model");
 class MatchService {
   async getThemactch(req, res, next) {
     try {
-      // Call the logoutUser function from the AuthService
       const getMatches = await matchModel
         .find()
         .populate("teamA")
@@ -18,7 +17,6 @@ class MatchService {
   }
   async getTheOneMatch(req) {
     try {
-      // Call the logoutUser function from the AuthService
       const getMatches = await matchModel
         .findById(req)
         .populate("teamA")
@@ -31,7 +29,6 @@ class MatchService {
   }
   async getSeriesMatches(req) {
     try {
-      // Call the logoutUser function from the AuthService
       console.log(req);
       const getMatches = await matchModel
         .find({ seriesId: req })
@@ -40,7 +37,7 @@ class MatchService {
         .exec();
       return getMatches;
     } catch (error) {
-      console.log(error)
+      console.log(error);
       return error;
     }
   }
@@ -50,24 +47,18 @@ class MatchService {
     return newSeries;
   }
   async UpdateMatchStatus(req) {
-    const { id, status } = req.body; // Assuming _id and status are present in req.body
-
+    const { id, status } = req.body;
     try {
-      // Update the "status" field of the document by its _id using $set
       const updatedMatch = await matchModel.findByIdAndUpdate(
         id,
-        { $set: { status } }, // Use $set to update only the "status" field
-        { new: true } // Ensure the updated document is returned
+        { $set: { status } },
+        { new: true }
       );
-
       if (!updatedMatch) {
-        // Handle the case where the document with the given _id was not found
         return null;
       }
-
       return updatedMatch;
     } catch (error) {
-      // Handle any errors that occur during the update
       console.error(error);
       throw error;
     }

@@ -3,7 +3,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // Define a service using a base URL and expected endpoints
 export const matchApi = createApi({
   reducerPath: "matchApi",
-  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_REACT_APP_BASE_URL  }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: import.meta.env.VITE_REACT_APP_BASE_URL,
+  }),
   endpoints: (builder) => ({
     getMatchAll: builder.query({
       query: () => `match`,
@@ -36,6 +38,7 @@ export const matchApi = createApi({
       }),
     }),
   }),
+  invalidates: [{ endpoint: "getMatchAll" }],
 });
 
 // Export hooks for usage in functional components, which are

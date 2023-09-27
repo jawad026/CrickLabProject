@@ -9,6 +9,7 @@ import Table from "../../../components/common/table/Table";
 import { IoIosAddCircle } from "react-icons/io";
 import Loading from "../../../components/Loading/Loading";
 import { useEffect, useState } from "react";
+import BackButton from "../../../components/common/BackButton/BackButton";
 
 const Match = () => {
   const location = useLocation();
@@ -36,6 +37,7 @@ const Match = () => {
 
   return (
     <>
+      <BackButton />
       <div className="flex gap-y-10 flex-col">
         <Heading title={"Match"} subtitle={"Winner Winner Chiken Dinner"} />
         <div>

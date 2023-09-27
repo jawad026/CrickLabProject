@@ -8,11 +8,12 @@ import { useGetTeamAllQuery } from "../../../Redux/Feature/teamApi";
 import { useGetSeriesAllQuery } from "../../../Redux/Feature/seriesApi";
 import { useAddMatchMutation } from "../../../Redux/Feature/matchApi";
 import Loading from "../../../components/Loading/Loading";
+import { useNavigate } from "react-router-dom";
 const AddMatch = () => {
   const { data: teamData = [] } = useGetTeamAllQuery();
   const { data: seriesData = [] } = useGetSeriesAllQuery();
   const [match, { isLoading }] = useAddMatchMutation();
-
+  const nevigate=useNavigate()
   const {
     register,
     handleSubmit,
@@ -32,6 +33,7 @@ const AddMatch = () => {
       .unwrap()
       .then(() => {
         toast.success("Match Sheduled");
+        nevigate('/admin/match')
         // Handle successful login response, e.g., store user token or redirect
       })
       .catch((error) => {

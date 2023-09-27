@@ -46,7 +46,7 @@ class AuthService {
   async checkEmailExistence(email) {
     try {
       const existingUser = await userModel.findOne({ email });
-      return !!existingUser; // Return true if the email exists, false otherwise
+      return !!existingUser;
     } catch (error) {
       throw error;
     }
@@ -67,9 +67,8 @@ class AuthService {
 
   async registerUser({ email, password, phone, name }) {
     try {
-      // Hash the password before saving it to the database
       const hashedPassword = await bcrypt.hash(password, 10);
-      // Create a new user record
+
       const newUser = new userModel({
         email,
         hash_password: hashedPassword,
@@ -86,7 +85,6 @@ class AuthService {
 
   async updateUser(userId, updates) {
     try {
-      // Find the user by userId and update their information
       const user = await userModel.findByIdAndUpdate(userId, updates, {
         new: true,
       });
@@ -99,18 +97,14 @@ class AuthService {
 
   async changePassword(userId, currentPassword, newPassword) {
     try {
-      // Find the user by userId
       const user = await userModel.findById(userId);
 
-      // Check if the provided current password matches the stored password
       if (!user.validPassword(currentPassword)) {
         throw new Error("Incorrect current password");
       }
 
-      // Hash the new password before updating it
       const hashedPassword = await this.hashPassword(newPassword);
 
-      // Update the password
       user.password = hashedPassword;
       await user.save();
 
@@ -122,9 +116,8 @@ class AuthService {
 
   async logoutUser(req) {
     try {
-      // Use Passport.js req.logout() to log the user out and clear the session
       req.logout();
-      return true; // Indicate that logout was successful
+      return true;
     } catch (error) {
       throw error;
     }

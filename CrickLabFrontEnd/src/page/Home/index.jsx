@@ -30,12 +30,23 @@ function Home() {
   if (Score && Match && News && ScoreAll) {
     return <Loading />;
   }
+  const ConvertData = (targetTime) => {
+    const date = new Date(targetTime);
+    return date;
+  };
   return (
     <div className="">
       <div className="bg-blue-400 h-full">
         <Search data={seriesData} onClick={(id) => handleSeries(id)} />
         <div className="grid grid-cols-3 md:grid-cols-4 gap-x-6 p-10 ">
-          <Carousel cards={filterData} scorecard={scoreData} />
+          <Carousel
+            cards={filterData
+              .slice()
+              .sort(
+                (a, b) => ConvertData(b.datetime) - ConvertData(a.datetime)
+              )}
+            scorecard={scoreData}
+          />
         </div>
       </div>
 

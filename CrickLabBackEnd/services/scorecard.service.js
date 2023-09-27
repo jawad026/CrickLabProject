@@ -1,4 +1,3 @@
-// services/product.services.js
 
 const playerModel = require("../models/player.model");
 const scorecardModel = require("../models/scorecard.model");
@@ -6,7 +5,6 @@ const scorecardModel = require("../models/scorecard.model");
 class ScoreCardService {
   async getScoreById(req, res, next) {
     try {
-      // Call the logoutUser function from the AuthService
       const getScoreCard = await scorecardModel.find({ match: req });
       return getScoreCard;
     } catch (error) {
@@ -42,9 +40,8 @@ class ScoreCardService {
               totalScore: totalScore,
             };
           } else {
-            // Handle the case when playerInfo is not found (e.g., log an error)
             console.error(`Player info not found for playerId: ${playerId}`);
-            return null; // Return a default value or handle the case as needed
+            return null; 
           }
         }
       );
@@ -52,15 +49,14 @@ class ScoreCardService {
 
       return topPlayers.slice(0, 10);
     } catch (error) {
-      // Handle errors, e.g., log or return an error response
+
       console.error(error);
-      throw error; // Re-throw the error or handle it as appropriate
+      throw error; 
     }
   }
 
   async getScore(req, res, next) {
     try {
-      // Call the logoutUser function from the AuthService
       const getScoreCard = await scorecardModel.find();
       return getScoreCard;
     } catch (error) {

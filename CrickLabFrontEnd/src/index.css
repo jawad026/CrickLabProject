@@ -5,8 +5,6 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
-
-
 ::-webkit-scrollbar {
   height: 4px; /* height of horizontal scrollbar ← You're missing this */
   width: 7px; /* width of vertical scrollbar */
@@ -56,6 +54,10 @@
   right: 8px;
 }
 
-.active{
+.active {
   color: blue !important;
+}
+#default-sidebar a.active {
+  color: white !important;
+  background-color: rgb(55, 65, 81, 1);
 }

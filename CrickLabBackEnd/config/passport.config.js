@@ -3,20 +3,16 @@ const LocalStrategy = require("passport-local").Strategy;
 
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
-const config = require("../config/config"); // Replace 'secretKey' with your actual secret key
 var jwt = require("jsonwebtoken");
 const userModel = require("../models/user.model");
-// Local Strategy for email/password login
 
 passport.use(
   new LocalStrategy({ usernameField: "email" }, userModel.authenticate())
 );
 
-
-// JWT Strategy for token-based authentication
 const jwtOptions = {
-  secretOrKey: config.secretKey,
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(), // Assuming JWT is sent via the Authorization header as a Bearer token
+  secretOrKey: process.env.SECRET_KEY,
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
 };
 
 passport.use(
@@ -36,9 +32,8 @@ passport.use(
   })
 );
 
-// Helper function to sign a JWT
 function signToken(userId) {
-  return jwt.sign({ sub: userId }, config.secretKey, { expiresIn: "1d" });
+  return jwt.sign({ sub: userId }, process.env.SECRET_KEY, { expiresIn: "1d" });
 }
 passport.serializeUser((user, done) => {
   done(null, user.id);

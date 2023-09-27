@@ -20,7 +20,6 @@ var newsRouter = require("./routes/news");
 const { createServer } = require("http");
 
 var app = express();
-
 var httpServer = createServer(app);
 var io = new Server(httpServer, {
   cors: {
@@ -30,13 +29,12 @@ var io = new Server(httpServer, {
 
 app.use(
   session({
-    secret: "12345-67890-09876-54321", // Replace with a secret key for session management
+    secret: "12345-67890-09876-54321",
     resave: false,
     saveUninitialized: false,
   })
 );
 
-// view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 
@@ -58,7 +56,6 @@ app.use("/players", playersRouter);
 app.use("/scorecard", scorecardRouter);
 app.use("/news", newsRouter);
 
-// creating the connection with socket.io
 let match = {
   run: 0,
   ball: 0,
@@ -68,20 +65,18 @@ let match = {
   playerScore: [],
 };
 io.on("connection", (socket) => {
-  // Handle custom events
   socket.on("scoreUpdated", (newScores) => {
     match = newScores;
-    io.emit("scoreUpdated", newScores); // Broadcast the message to all connected clients
+    io.emit("scoreUpdated", newScores);
   });
 
   io.emit("scoreUpdated", match);
-  // Handle disconnection
+
   socket.on("disconnect", () => {
     console.log("A user disconnected");
   });
 });
 
-// catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
 });
@@ -90,13 +85,10 @@ io.listen(3001, () => {
   console.log("Socket.io server is running on port 3001");
 });
 
-// error handler
 app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
-  // render the error page
   res.status(err.status || 500);
   res.render("error");
 });

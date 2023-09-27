@@ -6,6 +6,7 @@ import Select from "../../../components/common/input/select";
 import Button from "../../../components/common/button/Button";
 import { useAddSeriesMutation } from "../../../Redux/Feature/seriesApi";
 import Loading from "../../../components/Loading/Loading";
+import BackButton from "../../../components/common/BackButton/BackButton";
 
 const AddSeries = () => {
   const [series, { isLoading }] = useAddSeriesMutation();
@@ -40,6 +41,7 @@ const AddSeries = () => {
   }
   return (
     <div>
+      <BackButton />
       <Heading
         title={"Add Series"}
         subtitle={"Please Add All Information"}

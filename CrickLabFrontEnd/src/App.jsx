@@ -26,7 +26,6 @@ function App() {
   const PrivateWrapper = ({ auth: { isAuthenticated } }) => {
     return isAuthenticated ? <Outlet /> : <Navigate to="admin/login" />;
   };
-  console.log(JSON.parse(localStorage.getItem("auth")));
   return (
     <>
       <Routes>
@@ -68,7 +67,7 @@ function App() {
           </Route>
         </Route>
 
-        <Route path="/admin/login" element={<Login />} />
+        <Route path="/admin" element={<Login />} />
       </Routes>
     </>
   );
