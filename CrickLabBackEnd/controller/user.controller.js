@@ -40,8 +40,6 @@ class userController {
           console.error("Error during authentication:", err);
           return res.status(500).json({ err: "Authentication error" });
         }
-
-        console.log("User authenticated successfully");
         return res
           .status(200)
           .json({ success: true, status: "Registration Successful!" });

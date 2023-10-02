@@ -101,7 +101,7 @@ const AddSeries = () => {
           <Button
             optional={"col-span-2"}
             disabled={isLoading}
-            label={"Login"}
+            label={"Add Series"}
             onClick={handleSubmit}
           />
         </div>
